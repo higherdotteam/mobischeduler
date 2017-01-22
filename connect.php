@@ -4,7 +4,7 @@
 $host = "138.197.209.226";
 $username = "root";
 $password = "root";
-$database = "hdl";
+$database = "hdt";
 
 $connection = @mysqli_connect($host, $username, $password) or die("Could not connect.");
 

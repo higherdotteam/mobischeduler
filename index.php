@@ -39,16 +39,49 @@
 		</div>
 		<div class="container">
 			<fieldset>
-			<legend><strong>How would you like to meet with your instructor?</strong></legend>
-			<form action="second_form.php" method="post">
-				<select name="meetup_form">
-					<option value="in_person">In-Person</option>
-					<option value="video_chat">Video-Chat</option>
-					<option value="slack_chat">via Slack-Chat</option>
-				</select>
-				<span>&nbsp;&nbsp;&nbsp;
-				<input type="submit" name="submit" class="btn btn-info" value="Submit"/>
-				</span>
+			<form id="f1" action="handle_datetime.php" method="post">
+      <legend>
+<strong>I am</strong>
+<select name="whoami">
+<?
+$conn = mysqli_connect("138.197.209.226", "root", "root", "hdt");
+    $query = mysqli_query($conn, "select * from students");
+while ($row = mysqli_fetch_array($query)) { ?>
+  <option><?= $row['slackusername'] ?></option>
+<? } ?> 
+</select>
+and I would like to meet with andrew on:
+</legend>
+
+<table class="table">
+<tr>
+<td>Sunday Jan 22</td>
+<td>Monday Jan 23</td>
+<td>Tuesday Jan 24</td>
+<td>Wednesday Jan 25</td>
+<td>Thursday Jan 26</td>
+<td>Friday Jan 27</td>
+<td>Saturday Jan 28</td>
+</tr>
+<tr>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+<td>7:00 AM</td>
+</tr>
+<tr>
+<td>8:00 AM</td>
+<td>8:00 AM</td>
+<td><a href="#" onclick="document.getElementById('f1').submit(); return false;">8:00 AM</a></td>
+<td>8:00 AM</td>
+<td>8:00 AM</td>
+<td>8:00 AM</td>
+<td>8:00 AM</td>
+</tr>
+</table>
 			</form>
 			</fieldset>
 		</div>
