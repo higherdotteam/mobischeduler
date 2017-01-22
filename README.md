@@ -2,6 +2,20 @@
 lets higher.team students schedule one on ones with teacher via slack, video chat, or in person
 
 ```
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `teacher_id` int,
+  `happens_at` datetime,
+  `flavor` varchar(50),
+  `student_id` int
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+old
+
 CREATE TABLE `video_chat_meetups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fname` varchar(30) NOT NULL,
