@@ -1,7 +1,7 @@
 # mobischeduler
 lets higher.team students schedule one on ones with teacher via slack, video chat, or in person
 
-
+```
 CREATE TABLE `video_chat_meetups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fname` varchar(30) NOT NULL,
@@ -31,3 +31,4 @@ CREATE TABLE `in_person_meetups` (
   `time` time(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+```
