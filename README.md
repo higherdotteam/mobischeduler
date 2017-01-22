@@ -4,10 +4,10 @@ lets higher.team students schedule one on ones with teacher via slack, video cha
 ```
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `teacher_id` int,
+  `teacher_id` int(11),
   `happens_at` datetime,
   `flavor` varchar(50),
-  `student_id` int
+  `student_id` int(11)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
