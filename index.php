@@ -79,7 +79,7 @@ $hour = $today + (8*3600);
 for ($i=0; $i<14; $i++) { ?>
 <tr>
 <? for ($j=0; $j<7; $j++) { ?>
-<td><?= date('g i A', $hour) ?> </td>
+<td><a style="color: black;" onclick="$('#foo').val = '<?= $hour?>'; return false;" href="#"><?= date('g i A', $hour) ?></a></td>
 <? 
 } ?>
 </tr>
