@@ -65,7 +65,7 @@ $t7 = null;
 				</select>
 				<strong>and I would like to meet with Andrew on:</strong>
 				</legend>
-				<? date_default_timezone_set('America/Los_Angeles');
+				<?php date_default_timezone_set('America/Los_Angeles');
 					
 					$today = strtotime('now'); 
 					$t2 = $today + (3600*24*1); 
@@ -86,16 +86,16 @@ $t7 = null;
 						<td>Fri <?=date('m-d H', $t6);?></td>
 						<td>Sat <?=date('m-d H', $t7);?></td>
 					</tr>
-					<?
+					<?php
 					$hour = $today + (8*3600);
 					for ($i=0; $i<14; $i++) { ?>
 					<tr>
-					<? for ($j=0; $j<7; $j++) { ?>
+					<?php for ($j=0; $j<7; $j++) { ?>
 					<td><a style="color: black;" onclick="document.getElementById('foo').val = '<?= $hour ?>'; return false;" href="#"><?= date('g i A', $hour) ?></a></td>
-					<? 
+					<?php 
 					} ?>
 					</tr>
-					<? 
+					<?php 
 					$hour = $hour + 3600;
 					} ?>
 				</table>
