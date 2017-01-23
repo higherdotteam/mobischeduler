@@ -53,15 +53,18 @@ while ($row = mysqli_fetch_array($query)) { ?>
 and I would like to meet with andrew on:
 </legend>
 
+<? date_default_timezone_set('America/Los_Angeles');
+$today = strtotime('today'); ?>
+
 <table class="table">
 <tr>
-<td>Sunday Jan 22</td>
-<td>Monday Jan 23</td>
-<td>Tuesday Jan 24</td>
-<td>Wednesday Jan 25</td>
-<td>Thursday Jan 26</td>
-<td>Friday Jan 27</td>
-<td>Saturday Jan 28</td>
+<td>Sun <?=date('m-d H', $today)?></td>
+<td>Mon <?=date('m-d H', $today+(3600*24))?></td>
+<td>Tue <?=date('m-d H', $today+(3600*48))?></td>
+<td>Wed <?=date('m-d H', $today+(3600*24*3))?></td>
+<td>Thu <?=date('m-d H', $today+(3600*24*4))?></td>
+<td>Fri <?=date('m-d H', $today+(3600*24*5))?></td>
+<td>Sat <?=date('m-d H', $today+(3600*24*6))?></td>
 </tr>
 <tr>
 <td>7:00 AM</td>
