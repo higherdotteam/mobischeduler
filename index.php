@@ -54,36 +54,33 @@ and I would like to meet with andrew on:
 </legend>
 
 <? date_default_timezone_set('America/Los_Angeles');
-$today = strtotime('today'); ?>
+$today = strtotime('today'); 
+$t2 = $today + (3600*24*1); 
+$t3 = $today + (3600*24*2); 
+$t4 = $today + (3600*24*3); 
+$t5 = $today + (3600*24*4); 
+$t6 = $today + (3600*24*5); 
+$t7 = $today + (3600*24*6); 
+
+?>
 
 <table class="table">
 <tr>
 <td>Sun <?=date('m-d H', $today)?></td>
-<td>Mon <?=date('m-d H', $today+(3600*24))?></td>
-<td>Tue <?=date('m-d H', $today+(3600*48))?></td>
-<td>Wed <?=date('m-d H', $today+(3600*24*3))?></td>
-<td>Thu <?=date('m-d H', $today+(3600*24*4))?></td>
-<td>Fri <?=date('m-d H', $today+(3600*24*5))?></td>
-<td>Sat <?=date('m-d H', $today+(3600*24*6))?></td>
+<td>Mon <?=date('m-d H', $t2)?></td>
+<td>Tue <?=date('m-d H', $t3)?></td>
+<td>Wed <?=date('m-d H', $t4)?></td>
+<td>Thu <?=date('m-d H', $t5)?></td>
+<td>Fri <?=date('m-d H', $t6)?></td>
+<td>Sat <?=date('m-d H', $t7)?></td>
 </tr>
+<? for ($i=0; $i<18; $i++) { ?>
 <tr>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
-<td>7:00 AM</td>
+<? for ($j=0; $j<7; $j++) { ?>
+<td>8:00 AM</td>
+<? } ?>
 </tr>
-<tr>
-<td>8:00 AM</td>
-<td>8:00 AM</td>
-<td><a href="#" onclick="document.getElementById('f1').submit(); return false;">8:00 AM</a></td>
-<td>8:00 AM</td>
-<td>8:00 AM</td>
-<td>8:00 AM</td>
-<td>8:00 AM</td>
-</tr>
+<? } ?>
 </table>
 			</form>
 			</fieldset>
