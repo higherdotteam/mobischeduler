@@ -50,7 +50,7 @@ $t7 = null;
 		</div>
 		<div class="container">
 			<fieldset>
-			<form name="form" action="handle_datetime.php" method="get">
+			<form name="form" id="form" action="handle_datetime.php" method="post">
 				<legend>
 				<strong>I am</strong>
 				<select name="whoami">
@@ -59,7 +59,7 @@ $t7 = null;
 					$execute_query = @mysqli_query($conn, $query);
 					
 						while($row = mysqli_fetch_array($execute_query)){
-							echo "<option>" . $row['slackusername'] . "</option>";
+							echo "<option value='" . $row['id'] . "'>" . $row['slackusername'] . "</option>";
 						}
 					?>
 				</select>
