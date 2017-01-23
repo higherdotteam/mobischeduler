@@ -74,13 +74,18 @@ $t7 = $today + (3600*24*6);
 <td>Fri <?=date('m-d H', $t6)?></td>
 <td>Sat <?=date('m-d H', $t7)?></td>
 </tr>
-<? for ($i=0; $i<18; $i++) { ?>
+<?
+$hour = $today + (8*3600);
+for ($i=0; $i<14; $i++) { ?>
 <tr>
 <? for ($j=0; $j<7; $j++) { ?>
-<td>8:00 AM</td>
-<? } ?>
+<td><?= date('g i A', $hour) ?> </td>
+<? 
+} ?>
 </tr>
-<? } ?>
+<? 
+$hour = $hour + 3600;
+} ?>
 </table>
 			</form>
 			</fieldset>
