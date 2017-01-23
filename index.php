@@ -58,10 +58,9 @@ $t7 = null;
 					$query = "SELECT * FROM students";
 					$execute_query = @mysqli_query($conn, $query);
 					
-						while($row = mysqli_fetch_array($execute_query)){
-							echo "<option value='" . $row['id'] . "'>" . $row['slackusername'] . "</option>";
-						}
-					?>
+          while($row = mysqli_fetch_array($execute_query)){ ?>
+            <option value="<?=$row['id']?>"><?=$row['slackusername']?></option>
+          <?php } ?>
 				</select>
 				<strong>and I would like to meet with Andrew on:</strong>
 				</legend>
