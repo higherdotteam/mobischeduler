@@ -1,3 +1,14 @@
+<?php
+require "connect.php";
+$today = null;
+$hour = null;
+$t2 = null;
+$t3 = null;
+$t4 = null;
+$t5 = null;
+$t6 = null;
+$t7 = null;
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,54 +50,56 @@
 		</div>
 		<div class="container">
 			<fieldset>
-			<form id="f1" action="handle_datetime.php" method="post">
-      <legend>
-<strong>I am</strong>
-<select name="whoami">
-<?
-$conn = mysqli_connect("138.197.209.226", "root", "root", "hdt");
-    $query = mysqli_query($conn, "select * from students");
-while ($row = mysqli_fetch_array($query)) { ?>
-  <option><?= $row['slackusername'] ?></option>
-<? } ?> 
-</select>
-and I would like to meet with andrew on:
-</legend>
+			<form name="f1" action="handle_datetime.php" method="post">
+				<legend>
+				<strong>I am</strong>
+				<select name="whoami">
+				<?php
+				$query = "SELECT * FROM students";
+				$execute_query = @mysqli_query($conn, $query);
+				
+					while($row = mysqli_fetch_array($execute_query)){
+						echo "<option>" . $row['slackusername'] . "</option>";
+					}
+				?>
+				</select>
+				<strong>and I would like to meet with Andrew on:</strong>
+				</legend>
+				<? date_default_timezone_set('America/Los_Angeles');
+					
+					$today = strtotime('now'); 
+					$t2 = $today + (3600*24*1); 
+					$t3 = $today + (3600*24*2); 
+					$t4 = $today + (3600*24*3); 
+					$t5 = $today + (3600*24*4); 
+					$t6 = $today + (3600*24*5); 
+					$t7 = $today + (3600*24*6); 
+				?>
 
-<? date_default_timezone_set('America/Los_Angeles');
-$today = strtotime('today'); 
-$t2 = $today + (3600*24*1); 
-$t3 = $today + (3600*24*2); 
-$t4 = $today + (3600*24*3); 
-$t5 = $today + (3600*24*4); 
-$t6 = $today + (3600*24*5); 
-$t7 = $today + (3600*24*6); 
-
-?>
-
-<table class="table">
-<tr>
-<td>Sun <?=date('m-d H', $today)?></td>
-<td>Mon <?=date('m-d H', $t2)?></td>
-<td>Tue <?=date('m-d H', $t3)?></td>
-<td>Wed <?=date('m-d H', $t4)?></td>
-<td>Thu <?=date('m-d H', $t5)?></td>
-<td>Fri <?=date('m-d H', $t6)?></td>
-<td>Sat <?=date('m-d H', $t7)?></td>
-</tr>
-<?
-$hour = $today + (8*3600);
-for ($i=0; $i<14; $i++) { ?>
-<tr>
-<? for ($j=0; $j<7; $j++) { ?>
-<td><a style="color: black;" onclick="$('#foo').val = '<?= $hour?>'; return false;" href="#"><?= date('g i A', $hour) ?></a></td>
-<? 
-} ?>
-</tr>
-<? 
-$hour = $hour + 3600;
-} ?>
-</table>
+				<table class="table">
+					<tr>
+						<td>Sun <?=date('m-d H', $today);?></td>
+						<td>Mon <?=date('m-d H', $t2);?></td>
+						<td>Tue <?=date('m-d H', $t3);?></td>
+						<td>Wed <?=date('m-d H', $t4);?></td>
+						<td>Thu <?=date('m-d H', $t5);?></td>
+						<td>Fri <?=date('m-d H', $t6);?></td>
+						<td>Sat <?=date('m-d H', $t7);?></td>
+					</tr>
+					<?
+					$hour = $today + (8*3600);
+					for ($i=0; $i<14; $i++) { ?>
+					<tr>
+					<? for ($j=0; $j<7; $j++) { ?>
+					<td><a style="color: black;" onclick="document.getElementById('foo').val = '<?= $hour ?>'; return false;" href="#"><?= date('g i A', $hour) ?></a></td>
+					<? 
+					} ?>
+					</tr>
+					<? 
+					$hour = $hour + 3600;
+					} ?>
+				</table>
+				<input type="hidden" name="h1" id="h1" value="123">
 			</form>
 			</fieldset>
 		</div>
