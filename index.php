@@ -50,31 +50,31 @@ $t7 = null;
 		</div>
 		<div class="container">
 			<fieldset>
-			<form name="f1" action="handle_datetime.php" method="post">
+			<form name="form" action="handle_datetime.php" method="get">
 				<legend>
 				<strong>I am</strong>
 				<select name="whoami">
-				<?php
-				$query = "SELECT * FROM students";
-				$execute_query = @mysqli_query($conn, $query);
-				
-					while($row = mysqli_fetch_array($execute_query)){
-						echo "<option>" . $row['slackusername'] . "</option>";
-					}
-				?>
+					<?php
+					$query = "SELECT * FROM students";
+					$execute_query = @mysqli_query($conn, $query);
+					
+						while($row = mysqli_fetch_array($execute_query)){
+							echo "<option>" . $row['slackusername'] . "</option>";
+						}
+					?>
 				</select>
 				<strong>and I would like to meet with Andrew on:</strong>
 				</legend>
-				<?php date_default_timezone_set('America/Los_Angeles');
-					
-					$today = strtotime('now'); 
-					$t2 = $today + (3600*24*1); 
-					$t3 = $today + (3600*24*2); 
-					$t4 = $today + (3600*24*3); 
-					$t5 = $today + (3600*24*4); 
-					$t6 = $today + (3600*24*5); 
-					$t7 = $today + (3600*24*6); 
-				?>
+					<?php date_default_timezone_set('America/Los_Angeles');
+						
+						$today = strtotime('today'); 
+						$t2 = $today + (3600*24*1); 
+						$t3 = $today + (3600*24*2); 
+						$t4 = $today + (3600*24*3); 
+						$t5 = $today + (3600*24*4); 
+						$t6 = $today + (3600*24*5); 
+						$t7 = $today + (3600*24*6); 
+					?>
 
 				<table class="table">
 					<tr>
@@ -88,18 +88,22 @@ $t7 = null;
 					</tr>
 					<?php
 					$hour = $today + (8*3600);
-					for ($i=0; $i<14; $i++) { ?>
+					for ($i=0; $i<14; $i++) { 
+					?>
 					<tr>
-					<?php for ($j=0; $j<7; $j++) { ?>
-					<td><a style="color: black;" onclick="document.getElementById('foo').val = '<?= $hour ?>'; return false;" href="#"><?= date('g i A', $hour) ?></a></td>
+					<?php for ($j=0; $j<7; $j++) { 
+					?>
+					<td><a style="color: black;" onclick="$('#h1').val = '<?= $hour ?>'; $('#form').submit();" href="#"><?= date('g:i A', $hour) ?></a></td>
 					<?php 
-					} ?>
+					} 
+					?>
 					</tr>
 					<?php 
 					$hour = $hour + 3600;
-					} ?>
+					} 
+					?>
 				</table>
-				<input type="hidden" name="h1" id="h1" value="123">
+				<input type="hidden" name="h1" id="h1" value="<? $hour ?>">
 			</form>
 			</fieldset>
 		</div>
