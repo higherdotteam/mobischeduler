@@ -8,6 +8,8 @@ $t4 = null;
 $t5 = null;
 $t6 = null;
 $t7 = null;
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,16 +101,22 @@ $t7 = null;
 					for ($i=0; $i<14; $i++) { 
 					?>
 					<tr>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $sec_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $third_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $fourth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $fifth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $sixth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $seventh_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $hour ?>'); $('#f1').submit();" href="#<?= $hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $sec_hour ?>'); $('#f1').submit();" href="#<?= $sec_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $third_hour ?>'); $('#f1').submit();" href="#<?= $third_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $fourth_hour ?>'); $('#f1').submit();" href="#<?= $fourth_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $fifth_hour ?>'); $('#f1').submit();" href="#<?= $fifth_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $sixth_hour ?>'); $('#f1').submit();" href="#<?= $sixth_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $seventh_hour ?>'); $('#f1').submit();" href="#<?= $seventh_hour?>"><?= date('g:i a', $hour) ?></a></td>
 					</tr>
 					<?php 
 					$hour = $hour + 3600;
+					$sec_hour = $sec_hour + 3600;
+					$third_hour = $third_hour + 3600;
+					$fourth_hour = $fourth_hour + 3600;
+					$fifth_hour = $fifth_hour + 3600;
+					$sixth_hour = $sixth_hour + 3600;
+					$seventh_hour = $seventh_hour + 3600;
 					} 
 					?>
 				</table>
