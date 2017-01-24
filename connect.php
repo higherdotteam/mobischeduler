@@ -6,7 +6,7 @@ $username = "root";
 $password = "root";
 $database = "hdt";
 
-$connection = @mysqli_connect($host, $username, $password) or die("Could not connect.");
+$conn = @mysqli_connect($host, $username, $password) or die("Could not connect.");
 
-$db_select = @mysqli_select_db($connection, $database) or die("Could not select database");
+$db_select = @mysqli_select_db($conn, $database) or die("Could not select database");
 ?>
