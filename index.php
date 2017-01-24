@@ -50,7 +50,7 @@ $t7 = null;
 		</div>
 		<div class="container">
 			<fieldset>
-			<form name="form" id="form" action="handle_datetime.php" method="post">
+			<form name="f1" id="f1" action="handle_datetime.php" method="post">
 				<legend>
 				<strong>I am</strong>
 				<select name="whoami">
@@ -58,9 +58,10 @@ $t7 = null;
 					$query = "SELECT * FROM students";
 					$execute_query = @mysqli_query($conn, $query);
 					
-          while($row = mysqli_fetch_array($execute_query)){ ?>
-            <option value="<?=$row['id']?>"><?=$row['slackusername']?></option>
-          <?php } ?>
+						while($row = mysqli_fetch_array($execute_query)){
+							echo "<option value='" . $row['id'] . "'>" . $row['slackusername'] . "</option>";
+						}
+					?>
 				</select>
 				<strong>and I would like to meet with Andrew on:</strong>
 				</legend>
@@ -74,28 +75,37 @@ $t7 = null;
 						$t6 = $today + (3600*24*5); 
 						$t7 = $today + (3600*24*6); 
 					?>
-
+					
 				<table class="table">
 					<tr>
-						<td>Sun <?=date('m-d H', $today);?></td>
-						<td>Mon <?=date('m-d H', $t2);?></td>
-						<td>Tue <?=date('m-d H', $t3);?></td>
-						<td>Wed <?=date('m-d H', $t4);?></td>
-						<td>Thu <?=date('m-d H', $t5);?></td>
-						<td>Fri <?=date('m-d H', $t6);?></td>
-						<td>Sat <?=date('m-d H', $t7);?></td>
+						<td><strong>Sun <?=date('m-d-y', $today);?></strong></td>
+						<td><strong>Mon <?=date('m-d-y', $t2);?></strong></td>
+						<td><strong>Tue <?=date('m-d-y', $t3);?></strong></td>
+						<td><strong>Wed <?=date('m-d-y', $t4);?></strong></td>
+						<td><strong>Thu <?=date('m-d-y', $t5);?></strong></td>
+						<td><strong>Fri <?=date('m-d-y', $t6);?><strong></td>
+						<td><strong>Sat <?=date('m-d-y', $t7);?></strong></td>
 					</tr>
+					
 					<?php
 					$hour = $today + (8*3600);
+					$sec_hour = $t2 + (8*3600);
+					$third_hour = $t3 + (8*3600);
+					$fourth_hour = $t4 + (8*3600);
+					$fifth_hour = $t5 + (8*3600);
+					$sixth_hour = $t6 + (8*3600);
+					$seventh_hour = $t7 + (8*3600);
+					
 					for ($i=0; $i<14; $i++) { 
 					?>
 					<tr>
-					<?php for ($j=0; $j<7; $j++) { 
-					?>
-					<td><a style="color: black;" onclick="$('#h1').val = '<?= $hour ?>'; $('#form').submit();" href="#"><?= date('g:i A', $hour) ?></a></td>
-					<?php 
-					} 
-					?>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $sec_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $third_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $fourth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $fifth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $sixth_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $seventh_hour ?>'); $('#f1').submit();" href="#"><?= date('g:i a', $hour) ?></a></td>
 					</tr>
 					<?php 
 					$hour = $hour + 3600;
