@@ -10,6 +10,8 @@ $t6 = null;
 $t7 = null;
 
 
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -98,16 +100,29 @@ $t7 = null;
 					$sixth_hour = $t6 + (8*3600);
 					$seventh_hour = $t7 + (8*3600);
 					
+					
+					
 					for ($i=0; $i<14; $i++) { 
+					$hours = array($hour, $sec_hour, $third_hour, $fourth_hour, $fifth_hour, $sixth_hour, $seventh_hour);
+					$hours_len = count($hours);
 					?>
 					<tr>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $hour ?>'); $('#f1').submit();" href="#<?= $hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $sec_hour ?>'); $('#f1').submit();" href="#<?= $sec_hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $third_hour ?>'); $('#f1').submit();" href="#<?= $third_hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $fourth_hour ?>'); $('#f1').submit();" href="#<?= $fourth_hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $fifth_hour ?>'); $('#f1').submit();" href="#<?= $fifth_hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $sixth_hour ?>'); $('#f1').submit();" href="#<?= $sixth_hour?>"><?= date('g:i a', $hour) ?></a></td>
-					<td><a style="color: black;" onclick="$('#h1').val('<?= $seventh_hour ?>'); $('#f1').submit();" href="#<?= $seventh_hour?>"><?= date('g:i a', $hour) ?></a></td>
+					<?php for($j=0; $j<$hours_len; $j++){
+						$check_date = mysqli_query($conn, "SELECT * FROM appointments WHERE happens_at >= FROM_UNIXTIME(" . $hours[$j] . ") AND happens_at <= FROM_UNIXTIME(" . $hours[$j] . ")");
+						if(mysqli_num_rows($check_date) == 0){
+					?>
+					<td><a style="color: black;" onclick="$('#h1').val('<?= $hours[$j] ?>'); $('#f1').submit();" href="#<?= $hours[$j]?>"><?= date('g:i a', $hour) ?></a></td>
+					<?php 
+						}
+						else{
+							?>
+							<td><?= date('g:i a', $hour) ?></td>
+							<?php
+						}
+					?>
+					<?php
+					}
+					?>
 					</tr>
 					<?php 
 					$hour = $hour + 3600;
